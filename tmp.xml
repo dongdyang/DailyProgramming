@@ -1,0 +1,20 @@
+<searchComponent name="suggest" class="solr.SuggestComponent">
+    <lst name="suggester">
+        <str name="name">suggest</str>
+        <str name="lookupImpl">FuzzyLookupFactory</str>
+
+        <str name="field">_text_</str>
+        <str name="suggestAnalyzerFieldType">string</str>
+    </lst>
+</searchComponent>
+
+<requestHandler name="/suggest" class="solr.SearchHandler">
+  <lst name="defaults">
+    <str name="suggest">true</str>
+    <str name="suggest.count">10</str>
+    <str name="suggest.dictionary">suggest</str>
+  </lst>
+  <arr name="components">
+    <str>suggest</str>
+  </arr>
+</requestHandler>
